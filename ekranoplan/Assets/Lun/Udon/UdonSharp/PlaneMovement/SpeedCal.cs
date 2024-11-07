@@ -7,14 +7,24 @@ using VRC.Udon;
 
 public class SpeedCal : UdonSharpBehaviour
 {
+    public Throttle_Controll Throttle_Controll;
+
     private float engineThrust = 1019.2f * 1000f;                       // 1019.2 kN to Newton
     private float mass = 286000f;                                       // 286 tons to kg
     [UdonSynced(UdonSyncMode.Linear)] public float currentSpeed = 0f;   // Current Speed
 
     public Text Plane_Speed;
 
-    public void CalculatePlaneSpeed(float throttle)
+    public void Update()
     {
+        CalculatePlaneSpeed();
+    }
+
+    public void CalculatePlaneSpeed()
+    {
+        float throttle = Throttle_Controll.Throttle_Rotation;
+
+        Debug.Log(">>> CalculatePlaneSpeed Called");
         float yaw = 0;
         float pitch = 0;
         float roll = 0;
