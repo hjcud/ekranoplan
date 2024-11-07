@@ -1,6 +1,7 @@
 ﻿
 using UdonSharp;
 using UnityEngine;
+using UnityEngine.UI;
 using VRC.SDKBase;
 using VRC.Udon;
 
@@ -10,8 +11,14 @@ public class SpeedCal : UdonSharpBehaviour
     private float mass = 286000f;                                       // 286 tons to kg
     [UdonSynced(UdonSyncMode.Linear)] public float currentSpeed = 0f;   // Current Speed
 
-    public void CalculatePlaneSpeed(float throttle, float yaw, float pitch, float roll)
+    public Text Plane_Speed;
+
+    public void CalculatePlaneSpeed(float throttle)
     {
+        float yaw = 0;
+        float pitch = 0;
+        float roll = 0;
+
         float throttleForce = throttle * engineThrust;
         
         // Yaw, Pitch, Roll
@@ -27,6 +34,7 @@ public class SpeedCal : UdonSharpBehaviour
 
         currentSpeed = Mathf.Clamp(currentSpeed, 0, 297f * 0.514f);
         RequestSerialization();
+        UpdatePlaneSpeed();
     }
 
     public override void OnDeserialization()
@@ -36,6 +44,6 @@ public class SpeedCal : UdonSharpBehaviour
 
     public void UpdatePlaneSpeed()
     {
-
+        Plane_Speed.text = currentSpeed.ToString();
     }
 }
