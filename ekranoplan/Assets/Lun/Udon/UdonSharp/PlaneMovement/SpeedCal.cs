@@ -1,5 +1,6 @@
 ﻿
 using UdonSharp;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 using VRC.SDKBase;
@@ -10,9 +11,9 @@ public class SpeedCal : UdonSharpBehaviour
     public Throttle_Controll Throttle_Controll;
     public Controller_Controll Controller_Controll;
 
-    private float engineThrust = 1.0192f;                       // 1.0192 Newton
-    private float mass = 286000f;                                       // 286 tons to kg
-    [UdonSynced(UdonSyncMode.Linear)] public float currentSpeed = 0f;   // Current Speed
+    private float engineThrust = 1.0192f;                                   // 1.0192 Newton
+    private float mass = 286000f;                                           // 286 tons to kg
+    [UdonSynced(UdonSyncMode.Linear)] public float currentVelocity = 0f;    // Current Speed
     [UdonSynced(UdonSyncMode.Linear)] public float drag = 0f;
     [UdonSynced(UdonSyncMode.Linear)] public float acceleration = 0f;
 
@@ -20,36 +21,46 @@ public class SpeedCal : UdonSharpBehaviour
     public Text Plane_drag;
     public Text Plane_acceleration;
 
-    public void Update()
+    public Quaternion planeRotation = Quaternion.identity;
+    public float planeVelocity = 0;
+    public float localVelocity = 0;
+
+    public void FixedUpdate()
     {
-        CalculatePlaneSpeed();
+        float dt = Time.fixedDeltaTime;
+        CalculateVelocity();
+        //CalculateState(dt);
+        //CalculateAngleOfAttack();
+        //CalculateGForce(dt);
     }
 
-    public void CalculatePlaneSpeed()
+    public void CalculateVelocity()
     {
-        float throttle = Throttle_Controll.Throttle_Rotation;
-        float yaw = Controller_Controll.yaw;
-        float pitch = Controller_Controll.pitch;
-        float roll = Controller_Controll.roll;
+        // throttle Range -0.3 ~ 1.2
+        float throttle = Throttle_Controll.throttlePower;
 
-        float throttleForce = throttle * engineThrust;
-        
-        // Yaw, Pitch, Roll
-        float yawEffect = Mathf.Abs(yaw) * 0.1f;
-        float pitchEffect = Mathf.Abs(pitch) * 0.1f;
-        float rollEffect = Mathf.Abs(roll) * 0.05f;
-
-        float totalDragCoefficient = 0.02f + yawEffect + pitchEffect + rollEffect;
-        drag = totalDragCoefficient * Mathf.Pow(currentSpeed, 2) / mass;
-
-        acceleration = (throttleForce / mass) - drag;
-        currentSpeed += acceleration * Time.deltaTime;
-
-        // 1 knot = 1.852 km/h
-        currentSpeed = Mathf.Clamp(currentSpeed, 0, 297f * 1.852f);
+        currentVelocity += throttle * 0.1f;
+        Mathf.Clamp(currentVelocity, 0, 550);
         RequestSerialization();
         UpdatePlaneSpeed();
     }
+
+    /*
+    public void CalculateState(float dt)
+    {
+        var invRotation = Quaternion.Inverse(planeRotation);
+    }
+
+    public void CalculateAngleOfAttack()
+    {
+
+    }
+
+    public void CalculateGForce(float dt)
+    {
+
+    }
+    */
 
     public override void OnDeserialization()
     {
@@ -58,7 +69,7 @@ public class SpeedCal : UdonSharpBehaviour
 
     public void UpdatePlaneSpeed()
     {
-        Plane_Speed.text = currentSpeed.ToString();
+        Plane_Speed.text = currentVelocity.ToString();
         Plane_drag.text = drag.ToString();
         Plane_acceleration.text = acceleration.ToString();
     }

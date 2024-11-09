@@ -3930,7 +3930,7 @@ MonoBehaviour:
   TrottleAnimator: {fileID: 685974801}
   Controll_Thr: {fileID: 1578960443}
   TriggeredUserID: 0
-  Throttle_Rotation: 0
+  throttlePower: 0
 --- !u!1 &1739394357
 GameObject:
   m_ObjectHideFlags: 0
@@ -4887,7 +4887,7 @@ GameObject:
   - component: {fileID: 1978604496}
   - component: {fileID: 1978604495}
   m_Layer: 0
-  m_Name: PlaneSpeed
+  m_Name: PlaneState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4958,12 +4958,15 @@ MonoBehaviour:
   _udonSharpBackingUdonBehaviour: {fileID: 1978604495}
   Throttle_Controll: {fileID: 1633584910}
   Controller_Controll: {fileID: 628208598}
-  currentSpeed: 0
+  currentVelocity: 0
   drag: 0
   acceleration: 0
   Plane_Speed: {fileID: 1765666526}
   Plane_drag: {fileID: 1885646692}
   Plane_acceleration: {fileID: 111472445}
+  planeRotation: {x: 0, y: 0, z: 0, w: 1}
+  planeVelocity: 0
+  localVelocity: 0
 --- !u!1 &2012835887
 GameObject:
   m_ObjectHideFlags: 0
