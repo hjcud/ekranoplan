@@ -4958,14 +4958,22 @@ MonoBehaviour:
   _udonSharpBackingUdonBehaviour: {fileID: 1978604495}
   Throttle_Controll: {fileID: 1633584910}
   Controller_Controll: {fileID: 628208598}
-  currentVelocity: 0
-  drag: 0
+  planeVelocity: 0
+  planePitch: 0
+  planeYaw: 0
+  planeRoll: 0
+  dragAcceleration: 0
   acceleration: 0
+  worldPitch: 0
+  worldYaw: 0
+  worldRoll: 0
   Plane_Speed: {fileID: 1765666526}
+  Plane_Yaw: {fileID: 409167729}
+  Plane_Pitch: {fileID: 1618619556}
+  Plane_Roll: {fileID: 2012835889}
   Plane_drag: {fileID: 1885646692}
   Plane_acceleration: {fileID: 111472445}
   planeRotation: {x: 0, y: 0, z: 0, w: 1}
-  planeVelocity: 0
   localVelocity: 0
 --- !u!1 &2012835887
 GameObject:
