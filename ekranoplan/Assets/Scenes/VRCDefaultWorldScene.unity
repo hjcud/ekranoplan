@@ -7220,7 +7220,7 @@ MonoBehaviour:
   PitchThrustVecMulti: 0.5
   YawThrustVecMulti: 0.25
   RollThrustVecMulti: 1
-  LiftMulti: 0.05
+  LiftMulti: 0.5
   RotationAddMulti: 0.0005
   airplaneVelocity: {x: 0, y: 0, z: 0}
   PrevFrameVelocity: {x: 0, y: 0, z: 0}
