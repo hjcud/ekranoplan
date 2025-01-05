@@ -1566,7 +1566,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!120 &745952497
 LineRenderer:
   serializedVersion: 2
@@ -3879,7 +3879,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 3bc8f1cca73177544af9576924ae46f8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 125
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3bc8f1cca73177544af9576924ae46f8,
         type: 3}
@@ -3963,7 +3963,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!120 &1605004932
 LineRenderer:
   serializedVersion: 2
@@ -4424,7 +4424,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!120 &1641000886
 LineRenderer:
   serializedVersion: 2
@@ -8800,12 +8800,11 @@ MonoBehaviour:
   useAssignedLayers: 0
   DynamicPrefabs: []
   DynamicMaterials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 2100000, guid: a52a572f0bcefb444bde233d04abdde8, type: 2}
   - {fileID: 2100000, guid: 6cf89cd87a3dd1d4aa53552f0a232642, type: 2}
-  - {fileID: 2100000, guid: 003513fd4ee3823459d10c645c031f53, type: 2}
-  - {fileID: 2100000, guid: 5e92e6b19f7282446bb2ef41479a2726, type: 2}
-  - {fileID: 2100000, guid: b723fb57e575b4f4f91e0721d5125e08, type: 2}
+  - {fileID: 2100000, guid: 1353b50c957f59243b66654e2f8a9d8a, type: 2}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 802a55f677a621542a2168f4d366e0e7, type: 2}
+  - {fileID: 2100000, guid: a52a572f0bcefb444bde233d04abdde8, type: 2}
   LightMapsNear: []
   LightMapsFar: []
   LightMode: 0
@@ -8889,6 +8888,14 @@ MonoBehaviour:
     ID: 21
     SerializedTypeNames:
     - VRC.Udon.UdonBehaviour
+  - gameObject: {fileID: 513034214}
+    ID: 22
+    SerializedTypeNames:
+    - VRC.SDK3.Components.VRCObjectSync
+  - gameObject: {fileID: 2084073065}
+    ID: 23
+    SerializedTypeNames:
+    - VRC.SDK3.Components.VRCObjectSync
   portraitCameraPositionOffset: {x: 0, y: 0, z: 0}
   portraitCameraRotationOffset: {x: 0, y: 1, z: 0, w: -0.00000004371139}
   NavigationAreas: []
